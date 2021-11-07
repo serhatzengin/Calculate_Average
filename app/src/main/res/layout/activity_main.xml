@@ -9,7 +9,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="wrap_content">
 
 
         <Button
@@ -38,8 +38,8 @@
             android:layout_width="0dp"
             android:layout_height="42dp"
             android:layout_marginStart="16dp"
-            android:entries="@array/credit"
             android:layout_marginTop="24dp"
+            android:entries="@array/credit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_Lesson_Name" />
 
@@ -52,5 +52,28 @@
             app:layout_constraintStart_toEndOf="@+id/spn_Credit"
             app:layout_constraintTop_toTopOf="@+id/spn_Credit" />
     </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/purple_200">
+
+    </View>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+    </ScrollView>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="calculate_average"
+        android:text="Calculate">
+
+    </Button>
 
 </LinearLayout>
