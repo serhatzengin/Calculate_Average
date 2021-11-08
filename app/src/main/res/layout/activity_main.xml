@@ -15,7 +15,7 @@
         <Button
             android:id="@+id/btn_New_Lesson"
             android:layout_width="96dp"
-            android:layout_height="44dp"
+            android:layout_height="48dp"
             android:layout_marginTop="44dp"
             android:layout_marginEnd="24dp"
             android:text="Add"
@@ -25,7 +25,7 @@
         <AutoCompleteTextView
             android:id="@+id/et_Lesson_Name"
             android:layout_width="0dp"
-            android:layout_height="46dp"
+            android:layout_height="48dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="AutoCompleteTextView"
@@ -36,7 +36,7 @@
         <Spinner
             android:id="@+id/spn_Credit"
             android:layout_width="0dp"
-            android:layout_height="42dp"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:entries="@array/credit"
@@ -46,7 +46,7 @@
         <Spinner
             android:id="@+id/spn_Grade"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="48dp"
             android:layout_marginStart="36dp"
             android:entries="@array/all_Notes"
             app:layout_constraintStart_toEndOf="@+id/spn_Credit"
