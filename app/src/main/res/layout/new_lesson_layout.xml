@@ -12,7 +12,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="24dp"
-        android:text="Add"
+        android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
