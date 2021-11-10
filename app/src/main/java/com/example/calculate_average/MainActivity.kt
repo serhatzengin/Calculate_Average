@@ -4,16 +4,25 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.new_lesson_layout.view.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val LESSON = arrayOf("Math", "Turkish", "Literature", "Algorithm", "History")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        var adapter =
+            ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, LESSON)
+
+        et_Lesson_Name.setAdapter(adapter)
 
         if (rootLayout.childCount == 0) {
             btn_Calculate_Avarage.visibility = View.INVISIBLE
@@ -25,6 +34,8 @@ class MainActivity : AppCompatActivity() {
                 var inflater = LayoutInflater.from(this)
 
                 var newLessonView = inflater.inflate(R.layout.new_lesson_layout, null)
+
+                newLessonView.et_New_Lesson_Name.setAdapter(adapter)
 
 
                 //statik alandan kullanıcını girdiği değerleri alalım
@@ -73,6 +84,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun calculate_average(view: android.view.View) {}
+
     fun findingSpinnerValueIndex(spinner: Spinner, valueToLookFor: String): Int {
 
         var index = 0
