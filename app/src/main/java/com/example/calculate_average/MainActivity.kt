@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Spinner
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.new_lesson_layout.view.*
 
@@ -14,47 +15,67 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
+        if (rootLayout.childCount == 0) {
+            btn_Calculate_Avarage.visibility = View.INVISIBLE
+        } else btn_Calculate_Avarage.visibility = View.VISIBLE
+
         btn_New_Lesson.setOnClickListener {
 
-            var inflater = LayoutInflater.from(this)
+            if (!et_Lesson_Name.text.isNullOrEmpty()) {
+                var inflater = LayoutInflater.from(this)
 
-            var newLessonView = inflater.inflate(R.layout.new_lesson_layout, null)
+                var newLessonView = inflater.inflate(R.layout.new_lesson_layout, null)
 
 
-            //statik alandan kullanıcını girdiği değerleri alalım
-            var lessonName = et_Lesson_Name.text.toString()
-            var lessonCredit = spn_Credit.selectedItem.toString()
-            var lessonGrade = spn_Grade.selectedItem.toString()
+                //statik alandan kullanıcını girdiği değerleri alalım
+                var lessonName = et_Lesson_Name.text.toString()
+                var lessonCredit = spn_Credit.selectedItem.toString()
+                var lessonGrade = spn_Grade.selectedItem.toString()
 
-            newLessonView.et_New_Lesson_Name.setText(lessonName)
+                newLessonView.et_New_Lesson_Name.setText(lessonName)
 
-            newLessonView.spn_New_Credit.setSelection(
-                findingSpinnerValueIndex(
-                    spn_Credit,
-                    lessonCredit
+                newLessonView.spn_New_Credit.setSelection(
+                    findingSpinnerValueIndex(
+                        spn_Credit,
+                        lessonCredit
+                    )
                 )
-            )
 
-            newLessonView.spn_New_Grade.setSelection(
-                findingSpinnerValueIndex(
-                    spn_Grade,
-                    lessonGrade
+                newLessonView.spn_New_Grade.setSelection(
+                    findingSpinnerValueIndex(
+                        spn_Grade,
+                        lessonGrade
+                    )
                 )
-            )
+                newLessonView.btn_Delete_Lesson.setOnClickListener {
+                    rootLayout.removeView(newLessonView)
 
-            rootLayout.addView(newLessonView)
+                    if (rootLayout.childCount == 0) {
+                        btn_Calculate_Avarage.visibility = View.INVISIBLE
+                    } else btn_Calculate_Avarage.visibility = View.VISIBLE
+                }
 
+                rootLayout.addView(newLessonView)
+                reset()
 
+                btn_Calculate_Avarage.visibility = View.VISIBLE
+            } else {
+
+                Toast.makeText(this, "Please Enter Lesson Name", Toast.LENGTH_LONG).show()
+            }
         }
     }
 
+    fun reset() {
+        et_Lesson_Name.setText("")
+        spn_Credit.setSelection(0)
+        spn_Grade.setSelection(0)
+    }
+
     fun calculate_average(view: android.view.View) {}
-
-
     fun findingSpinnerValueIndex(spinner: Spinner, valueToLookFor: String): Int {
 
         var index = 0
-
         for (i in 0..spinner.count)
 
             if (spinner.getItemAtPosition(i).toString().equals(valueToLookFor)) {

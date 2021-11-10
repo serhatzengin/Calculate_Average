@@ -28,7 +28,9 @@
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="AutoCompleteTextView"
+            android:completionHint="Please Enter Lesson Name"
+            android:hint="Please Enter Lesson Name"
+            android:textColorHint="@color/colorPrimary"
             app:layout_constraintEnd_toStartOf="@+id/btn_New_Lesson"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -77,6 +79,7 @@
 
 
     <Button
+        android:id="@+id/btn_Calculate_Avarage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
