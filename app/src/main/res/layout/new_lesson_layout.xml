@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <Button
+        android:id="@+id/btn_Delete_Lesson"
+        android:layout_width="96dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="24dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <AutoCompleteTextView
+        android:id="@+id/et_New_Lesson_Name"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="AutoCompleteTextView"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Delete_Lesson"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spn_New_Credit"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:entries="@array/credit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_New_Lesson_Name" />
+
+    <Spinner
+        android:id="@+id/spn_New_Grade"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="36dp"
+        android:entries="@array/all_Notes"
+        app:layout_constraintStart_toEndOf="@+id/spn_New_Credit"
+        app:layout_constraintTop_toTopOf="@+id/spn_New_Credit" />
+
+</android.support.constraint.ConstraintLayout>
+
