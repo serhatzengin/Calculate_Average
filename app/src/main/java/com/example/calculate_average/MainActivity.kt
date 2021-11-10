@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.new_lesson_layout.view.*
 class MainActivity : AppCompatActivity() {
 
     private val LESSON = arrayOf("Math", "Turkish", "Literature", "Algorithm", "History")
+    private var allLessonInformation: ArrayList<Lessons> = ArrayList(5)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,7 +84,6 @@ class MainActivity : AppCompatActivity() {
         spn_Grade.setSelection(0)
     }
 
-    fun calculate_average(view: android.view.View) {}
 
     fun findingSpinnerValueIndex(spinner: Spinner, valueToLookFor: String): Int {
 
@@ -96,4 +96,53 @@ class MainActivity : AppCompatActivity() {
             }
         return index
     }
+
+
+    fun calculate_average(view: android.view.View) {
+
+        var totalGrade: Double = 0.0
+        var totalCredit = 0.0
+
+        for (i in 0..rootLayout.childCount - 1) {
+
+            var singleLine = rootLayout.getChildAt(i)
+
+            var temporaryLesson = Lessons(
+                singleLine.et_New_Lesson_Name.text.toString(),
+                ((singleLine.spn_New_Credit.selectedItemPosition) + 1).toString(),
+                singleLine.spn_New_Grade.selectedItem.toString(),
+            )
+            allLessonInformation.add(temporaryLesson)
+        }
+        for (currentLesson in allLessonInformation) {
+
+
+            totalGrade += convertLetterToNote(currentLesson.lessonLetterGrade) * (currentLesson.lessonCredit.toDouble())
+            totalCredit += currentLesson.lessonCredit.toDouble()
+        }
+
+        Toast.makeText(this, "Average:" + (totalGrade / totalCredit), Toast.LENGTH_LONG).show()
+        allLessonInformation.clear()
+    }
+
+
+    fun convertLetterToNote(incomingLetterGradeValue: String): Double {
+
+        var value = 0.0
+        when (incomingLetterGradeValue) {
+            "AA" -> value = 4.0
+            "BA" -> value = 3.5
+            "BB" -> value = 3.0
+            "CB" -> value = 2.5
+            "CC" -> value = 2.0
+            "DC" -> value = 1.5
+            "DD" -> value = 1.0
+            "FD" -> value = 0.5
+            "FF" -> value = 0.0
+
+        }
+        return value
+
+    }
+
 }
